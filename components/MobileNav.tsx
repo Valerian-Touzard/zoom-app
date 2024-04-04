@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import {
   Sheet,
   SheetClose,
@@ -14,7 +14,7 @@ import { usePathname } from "next/navigation";
 import React from "react";
 
 const MobileNav = () => {
-    const pathName = usePathname();
+  const pathName = usePathname();
   return (
     <section className="w-full max-x-[264px]">
       <Sheet>
@@ -46,26 +46,26 @@ const MobileNav = () => {
                     pathName === link.route || pathName.startsWith(link.route);
 
                   return (
-                    <Link
-                      href={link.route}
-                      key={link.label}
-                      className={cn(
-                        "flex gap-4 items-center p-4 rounded-lg w-full max-w-60",
-                        {
-                          "bg-blue-1": isActive,
-                        }
-                      )}
-                    >
-                      <Image
-                        src={link.imgUrl}
-                        alt={link.label}
-                        width={20}
-                        height={20}
-                      />
-                      <p className="font-semibold">
-                        {link.label}
-                      </p>
-                    </Link>
+                    <SheetClose asChild key={link.route}>
+                      <Link
+                        href={link.route}
+                        key={link.label}
+                        className={cn(
+                          "flex gap-4 items-center p-4 rounded-lg w-full max-w-60",
+                          {
+                            "bg-blue-1": isActive,
+                          }
+                        )}
+                      >
+                        <Image
+                          src={link.imgUrl}
+                          alt={link.label}
+                          width={20}
+                          height={20}
+                        />
+                        <p className="font-semibold">{link.label}</p>
+                      </Link>
+                    </SheetClose>
                   );
                 })}
               </section>
