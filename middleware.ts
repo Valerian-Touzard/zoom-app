@@ -1,10 +1,15 @@
-import { authMiddleware } from "@clerk/nextjs";
- 
-// Voir https://clerk.com/docs/references/nextjs/auth-middleware
-// Pour plus d'informations sur la configuration de votre Middleware.
-export default authMiddleware({
-  // Autoriser les utilisateurs déconnectés à accéder aux routes spécifiées.
-  // publicRoutes: ['/tout-le-monde-peut-visiter-cette-route'],
+import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+
+const protectedRoutes = createRouteMatcher([
+  '/',
+  '/upcoming',
+  '/recordings',
+  '/personal-room',
+  '/meeting(.*)',
+])
+
+export default clerkMiddleware((auth, req) => {
+  if (protectedRoutes(req)) auth().protect();
 });
  
 export const config = {
