@@ -12,7 +12,7 @@ const MeetingTypeList = () => {
   const router = useRouter();
 
   const createMeeting = () =>{
-    
+
   }
   return (
     <section className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
@@ -20,7 +20,7 @@ const MeetingTypeList = () => {
         img="/icons/add-meeting.svg"
         title="Nouvelle Réunion"
         description="Commencer une nouvelle réunion"
-        handleClick={() => setMeetingState("isJoiningMeeting")}
+        handleClick={() => setMeetingState("isInstantMeeting")}
         className="bg-orange-1"
       />
       <HomeCard
